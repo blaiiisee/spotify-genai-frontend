@@ -1,6 +1,6 @@
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
-import Donut from "./donut.tsx";
+import Donut from "./Donut.tsx";
 import DarkVeil from "./DarkVeil.tsx";
 
 const App = () => {
