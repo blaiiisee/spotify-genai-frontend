@@ -7,15 +7,15 @@ const Donut = () => {
 
   useFrame(() => {
     if (meshRef.current) {
-      meshRef.current.rotation.x = 0;
+      meshRef.current.rotation.x += 0.002;
       meshRef.current.rotation.y = 0;
     }
   });
 
   return (
-    <mesh ref={meshRef}>
+    <mesh ref={meshRef} castShadow>
       <torusGeometry args={[1, 0.4, 16, 100]} />
-      <meshStandardMaterial color={"pink"} />
+      <meshToonMaterial color={"pink"} />
     </mesh>
   );
 };
