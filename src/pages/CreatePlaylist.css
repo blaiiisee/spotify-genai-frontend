@@ -1,0 +1,164 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+#create_playlist_container{
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+#input-output_container{
+  position: relative;
+  margin-top: 15vh;
+  height: 70dvh;
+  z-index: 100;
+}
+
+.glass_button{
+  /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.26);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.4px);
+    -webkit-backdrop-filter: blur(7.4px);
+    border: 1px solid rgba(255, 255, 255, 1);
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight:700;
+    height: 3em;
+    width: 10em;
+    gap: 0.5em;
+    color: rgba(255, 255, 255, 1);
+    outline-style: none;
+    align-self: center;
+    margin-top: 0.2em;
+}
+
+.glass_button img {
+  height: 1.5em;
+}
+
+a:visited,
+a:active,
+a:hover,
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+#input_container{
+    height: 12em;
+    width: 30em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    outline-style: none;
+}
+
+#mood_prompt{
+    background: rgba(255, 255, 255, 0.26);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.4px);
+    -webkit-backdrop-filter: blur(7.4px);
+    border: 1px solid rgba(255, 255, 255, 1);
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight:lighter;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    resize: none;
+    height: 12dvh;
+    width: 24dvh;
+    opacity: 0.5;
+}
+
+#output_container{
+    height: 26em;
+    width: 30em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    outline-style: none;
+}
+
+.details {
+    margin-top: 0;
+    color:#e0e0e0;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#list_container{
+    max-height: 15em;
+    overflow-y: scroll;
+}
+
+
+#list_container::-webkit-scrollbar {
+  display: none;
+}
+
+.track {
+    background: rgba(255, 255, 255, 0.26);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.4px);
+    -webkit-backdrop-filter: blur(7.4px);
+    border: 1px solid rgba(255, 255, 255, 1);
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight:lighter;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    resize: none;
+    height: 5.2dvh;
+    width: 40dvh;
+    margin-left: 0.5em;
+    margin-bottom: 0.4em;
+    opacity: 0.8;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+}
+
+ul {list-style-type: none;}
+
+#add_to_spotify_button{
+    background: rgba(255, 255, 255, 0.26);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.4px);
+    -webkit-backdrop-filter: blur(7.4px);
+    border: 1px solid rgba(255, 255, 255, 1);
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight:700;
+    height: 3em;
+    width: 12em;
+    color: rgba(255, 255, 255, 1);
+    outline-style: none;
+    align-self: center;
+    margin-top: 0.6em;
+}
+
+#add_to_spotify_button:hover{
+    /* Mouse becomes pointer */
+    cursor: pointer;
+}

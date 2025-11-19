@@ -1,6 +1,13 @@
+import './CreatePlaylist.css'
 import { useState } from "react";
 import axios from "axios";
 import { type RecommendationsResponse, type GeneratePlaylistResponse } from "../types.ts";
+import { Canvas } from "@react-three/fiber";
+import { PerspectiveCamera, SoftShadows } from "@react-three/drei";
+import Airpods from "../Airpods.tsx";
+import { Text3D, Center } from '@react-three/drei';
+import CameraRig from "./CameraRig.tsx";
+import SpheresScene from './SpheresScene.tsx';
 
 const CreatePlaylist = () => {
   const [prompt, setPrompt] = useState("");
@@ -67,59 +74,91 @@ const CreatePlaylist = () => {
   };
 
   return (
-    <div>
-      <h2>Describe your vibe 🎧</h2>
+    <div id="create_playlist_container">
 
-      {!finalPlaylist && (
-        <>
-          <textarea
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            placeholder="e.g. A rainy day in a cozy coffee shop, feeling nostalgic but hopeful..."
-            disabled={isLoading}
-          />
-          <button onClick={handleGenerate} disabled={isLoading || !prompt}>
-            {isLoading ? "Generating..." : "Generate Recommendations"}
-          </button>
-        </>
-      )}
+      <div id="input-output_container">
+        {!finalPlaylist && (
+          <div id="input_container">
+            <textarea
+              id="mood_prompt"
+              wrap="soft"
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              placeholder="What's your mood today?"
+              disabled={isLoading}
+            />
+            <button onClick={handleGenerate} disabled={isLoading || !prompt} className="glass_button">
+              {isLoading ? "Enchanting..." : "Enchant mood"}
+            </button>
+          </div>
+        )}
 
-      {error && <div>{error}</div>}
+        {error && <div>{error}</div>}
 
-      {recommendations && (
-        <div>
-          <h3>{recommendations.title}</h3>
-          <p>{recommendations.description}</p>
+        <div id="output_container">
+          {recommendations && (
+            <div>
+              <h3 className="details">{recommendations.title}</h3>
+              <p className="details">{recommendations.description}</p>
 
-          <ul>
-            {recommendations.tracks.map((track) => (
-              <li key={track.id}>
-                <div>
-                  <strong>{track.name}</strong> -{" "}
-                  <span>{track.artists.map((a) => a.name).join(", ")}</span>
-                </div>
-                <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer">
-                  Preview
-                </a>
-              </li>
-            ))}
-          </ul>
+              <div id="list_container">
+                <ul>
+                  {recommendations.tracks.map((track) => (
+                    <li key={track.id} className='track'>
+                      <div>
+                        <strong>{track.name}</strong> -{" "}
+                        <span>{track.artists.map((a) => a.name).join(", ")}</span>
+                      </div>
+                      <a href={track.external_urls.spotify} target="_blank" rel="noopener noreferrer">
+                        Preview
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          <button onClick={handleCreatePlaylist} disabled={isLoading}>
-            {isLoading ? "Creating..." : "Create this Playlist on Spotify"}
-          </button>
+              <button onClick={handleCreatePlaylist} disabled={isLoading} id="add_to_spotify_button">
+                {isLoading ? "Creating..." : "Add Playlist to Spotify"}
+              </button>
+            </div>
+          )}
+
+          {finalPlaylist && (
+            <div>
+              <h3>Playlist Created!</h3>
+              <p>Your new playlist is ready.</p>
+              <a href={getFinalUrl()} target="_blank" rel="noopener noreferrer">
+                Open on Spotify
+              </a>
+            </div>
+          )}
+          </div>
         </div>
-      )}
 
-      {finalPlaylist && (
-        <div>
-          <h3>Playlist Created!</h3>
-          <p>Your new playlist is ready.</p>
-          <a href={getFinalUrl()} target="_blank" rel="noopener noreferrer">
-            Open on Spotify
-          </a>
-        </div>
-      )}
+      <div id="canvas-container">
+        <Canvas
+            shadows>
+            <PerspectiveCamera makeDefault position={[0, 0, 2]} />
+
+            {/* Lights */}
+            <ambientLight intensity={0.6} />
+            <directionalLight
+              position={[0, 1, 10]}
+              castShadow
+              intensity={1.6}
+              shadow-mapSize-width={1024}
+              shadow-mapSize-height={1024}
+            />
+            <SoftShadows size={10} samples={50} focus={0.4}/>
+
+            <Airpods />
+
+            <CameraRig />
+
+            <SpheresScene />
+        </Canvas>
+      </div>
+
     </div>
   );
 };

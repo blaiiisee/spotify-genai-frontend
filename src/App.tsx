@@ -4,7 +4,7 @@ import { SoftShadows } from "@react-three/drei";
 import Airpods from "./Airpods.tsx";
 import { Text3D, Center } from '@react-three/drei';
 import CameraRig from "./pages/CameraRig.tsx";
-import SpheresScene from "./SpheresScene.tsx";
+import SpheresScene from "./pages/SpheresScene.tsx";
 
 const App = () => {
   const apiUrl = import.meta.env.VITE_API_BASE_URL;
@@ -51,9 +51,9 @@ const App = () => {
       </div>
       <div id="login_text_container">
         <a href={`${apiUrl}/login`}>
-          <button className="login_button">
+          <div className="glass_button">
             <img src="/spotify_logo.png" alt="Spotify logo" />
-            Login with Spotify</button>
+            Login with Spotify</div>
         </a>
       </div>
     </div>

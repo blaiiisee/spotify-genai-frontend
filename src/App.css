@@ -28,7 +28,7 @@ body {
   z-index: 100;
 }
 
-.login_button{
+.glass_button{
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.26);
   border-radius: 16px;
@@ -48,12 +48,12 @@ body {
   outline-style: none;
 }
 
-.login_button:hover{
+.glass_button:hover{
   /* Mouse becomes pointer */
   cursor: pointer;
 }
 
-.login_button img {
+.glass_button img {
   height: 1.5em;
 }
 
