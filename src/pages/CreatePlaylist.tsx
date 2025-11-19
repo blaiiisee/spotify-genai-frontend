@@ -5,7 +5,6 @@ import { type RecommendationsResponse, type GeneratePlaylistResponse } from "../
 import { Canvas } from "@react-three/fiber";
 import { PerspectiveCamera, SoftShadows } from "@react-three/drei";
 import Airpods from "../Airpods.tsx";
-import { Text3D, Center } from '@react-three/drei';
 import CameraRig from "./CameraRig.tsx";
 import SpheresScene from './SpheresScene.tsx';
 
